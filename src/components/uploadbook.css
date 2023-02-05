@@ -1,0 +1,100 @@
+.upload-main-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 300px;
+}
+.upload-container {
+  width: 1000px;
+  height: 100%;
+  background-color: #7aa09550;
+  border-radius: 10px;
+}
+.form-container {
+  height: 100%;
+  margin: 10px 0;
+  border-bottom-left-radius: 10px;
+}
+.change-color-btn {
+  background-color: grey;
+  height: 30px;
+  width: 100%;
+  border-start-end-radius: 10px;
+  border-top-left-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+.change-color-btn button {
+  height: 12px;
+  width: 12px;
+  border-radius: 25px;
+  margin: 0 5px;
+  border-style: none;
+}
+#btn1 {
+  background-color: rgb(221, 5, 5);
+}
+#btn2 {
+  background-color: rgb(196, 196, 7);
+}
+#btn3 {
+  background-color: rgb(2, 103, 2);
+}
+.form-container {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: space-evenly;
+  background-color: white;
+  width: 300px;
+  margin-left: 5px;
+  height: 100%;
+}
+.inputs {
+  width: 250px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  margin-left: 10px;
+  height: 75px;
+}
+.inputs input {
+  width: 252px;
+  height: 25px;
+}
+.inputs p {
+  font-size: 0.7rem;
+}
+.selector {
+  width: 260px;
+  height: 30px;
+}
+#description-input {
+  height: 40px;
+}
+.file-drop {
+  display: flex;
+  align-items: center;
+}
+form {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+.book-cover {
+  height: 400px;
+  width: 400px;
+  background-color: green;
+  border-radius: 5px;
+}
+.book-cover-side {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+  background-color: red;
+  width: 500px;
+  height: 525px;
+}

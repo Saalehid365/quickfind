@@ -1,0 +1,22 @@
+.hero-box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+}
+.hero-title {
+  width: 700px;
+}
+.search-input {
+  width: 500px;
+}
+.in-mins {
+  color: #618b4a;
+  font-weight: bolder;
+  font-size: 4rem;
+}
+.subTitle {
+  font-weight: bold;
+  font-size: 1rem;
+}

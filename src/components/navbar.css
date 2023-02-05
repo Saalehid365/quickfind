@@ -1,0 +1,19 @@
+.find-find {
+  background-color: #afbc88;
+  border-radius: 10px;
+  padding: 0px 10px;
+}
+.signIn-btn {
+  width: 100%;
+}
+.signIn-btn:hover {
+  color: rgba(255, 255, 255, 0.441);
+}
+.link-style-btn {
+  text-decoration: none;
+  color: white;
+  font-size: 0.8rem;
+}
+.toolbar {
+  background-color: #7aa095;
+}
