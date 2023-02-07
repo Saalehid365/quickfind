@@ -1,7 +1,11 @@
-import React from "react";
+import React, { useContext } from "react";
 import "./signin.css";
 
+import { LoginContext } from "../components/contexthook";
+
 export const Signin = () => {
+  const { setLoginName, setLoginPassword, login } = useContext(LoginContext);
+
   return (
     <div className="signin-page">
       <div className="register-container">
@@ -10,18 +14,30 @@ export const Signin = () => {
         </div>
         <form>
           <div className="form-input">
-            <p>Username</p>
-            <input type="text"></input>
+            <p>Email</p>
+            <input
+              type="text"
+              onChange={(e) => {
+                setLoginName(e.target.value);
+              }}
+            ></input>
           </div>
           <div className="form-input">
             <p>Password</p>
-            <input type="text"></input>
+            <input
+              type="text"
+              onChange={(e) => {
+                setLoginPassword(e.target.value);
+              }}
+            ></input>
           </div>
+          <button onClick={login}>Sign in</button>
         </form>
         <div className="already">
           <p>forgotten password</p>
           <a href="./recoverpassword">Sign in</a>
         </div>
+        <p></p>
       </div>
     </div>
   );

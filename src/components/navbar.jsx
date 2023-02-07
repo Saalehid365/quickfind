@@ -1,5 +1,4 @@
 import * as React from "react";
-import { useState } from "react";
 import { Link } from "react-router-dom";
 import "./navbar.css";
 import AppBar from "@mui/material/AppBar";
@@ -14,12 +13,18 @@ import Button from "@mui/material/Button";
 import Stack from "@mui/material/Stack";
 import MenuItem from "@mui/material/MenuItem";
 import LocalLibraryIcon from "@mui/icons-material/LocalLibrary";
+import AccountCircleIcon from "@mui/icons-material/AccountCircle";
+import { useContext } from "react";
+import { LoginContext } from "./contexthook";
+import { auth } from "./firebase-config";
 
 //#d7f9f1 #7aa095 #40531b #618b4a #afbc88
 const pages = [];
 const settings = ["Profile", "Account", "Dashboard", "Logout"];
 
 function ResponsiveAppBar() {
+  const { user } = useContext(LoginContext);
+
   return (
     <AppBar position="static">
       <Container className="toolbar" maxWidth="xl">
@@ -115,6 +120,8 @@ function ResponsiveAppBar() {
           </Box>
           <Box>
             <Stack direction="row" spacing={3}>
+              <Typography>{user?.email}</Typography>
+              <AccountCircleIcon></AccountCircleIcon>
               <Button
                 variant="outlined"
                 href="./register"

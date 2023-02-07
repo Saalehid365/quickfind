@@ -15,7 +15,7 @@
   color: white;
 }
 .register-container {
-  height: 600px;
+  height: 500px;
   width: 600px;
   background-color: #afbc88e6;
   display: flex;
@@ -35,7 +35,7 @@ form {
   align-items: center;
 }
 .form-input {
-  width: 500px;
+  width: 450px;
   display: flex;
   flex-direction: column;
 

@@ -1,28 +1,32 @@
-import React from "react";
+import React, { useContext } from "react";
 import "./register.css";
-import { useState } from "react";
 import Button from "@mui/material/Button";
-import { auth } from "../firebase-config";
+import { auth } from "../components/firebase-config";
 import { createUserWithEmailAndPassword } from "firebase/auth";
 
-const Register = () => {
-  const [registerName, setRegisterName] = useState("");
-  const [registerUserName, setRegisterUserName] = useState("");
-  const [registerEmail, setRegisterEmail] = useState("");
-  const [registerPassword, setRegisterPassword] = useState("");
+import { LoginContext } from "../components/contexthook";
 
+const Register = () => {
+  const {
+    setRegisterEmail,
+    setRegisterPassword,
+    setRegisterName,
+    setRegisterUserName,
+    registerEmail,
+    registerPassword,
+  } = useContext(LoginContext);
   const register = async () => {
     try {
       const user = await createUserWithEmailAndPassword(
         auth,
-        registerName,
-        registerUserName
+        registerEmail,
+        registerPassword
       );
     } catch (error) {
       console.log(error.message);
     }
   };
-  const login = async () => {};
+
   const logout = async () => {};
   return (
     <div className="register-page">
@@ -68,7 +72,7 @@ const Register = () => {
             ></input>
           </div>
           <Button variant="contained" onClick={register}>
-            Contained
+            Create account
           </Button>
         </form>
         <div className="already">
