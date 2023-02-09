@@ -1,10 +1,25 @@
-import React, { useContext } from "react";
+import React, { useState } from "react";
 import "./signin.css";
-
-import { LoginContext } from "../components/contexthook";
+import { UserAuth } from "../components/contexthook";
+import { useNavigate } from "react-router-dom";
 
 export const Signin = () => {
-  const { setLoginName, setLoginPassword, login } = useContext(LoginContext);
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [error, setError] = useState("");
+  const navigate = useNavigate();
+  const { signin } = UserAuth();
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setError("");
+    try {
+      await signin(email, password);
+      navigate("/library");
+    } catch (e) {
+      setError(e.message);
+    }
+  };
 
   return (
     <div className="signin-page">
@@ -12,13 +27,13 @@ export const Signin = () => {
         <div className="signin-title">
           <p>Login account</p>
         </div>
-        <form>
+        <form onSubmit={handleSubmit}>
           <div className="form-input">
             <p>Email</p>
             <input
               type="text"
               onChange={(e) => {
-                setLoginName(e.target.value);
+                setEmail(e.target.value);
               }}
             ></input>
           </div>
@@ -27,11 +42,11 @@ export const Signin = () => {
             <input
               type="text"
               onChange={(e) => {
-                setLoginPassword(e.target.value);
+                setPassword(e.target.value);
               }}
             ></input>
           </div>
-          <button onClick={login}>Sign in</button>
+          <button>Sign in</button>
         </form>
         <div className="already">
           <p>forgotten password</p>

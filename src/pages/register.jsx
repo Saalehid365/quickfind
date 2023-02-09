@@ -1,63 +1,51 @@
-import React, { useContext } from "react";
+import React, { useState } from "react";
 import "./register.css";
 import Button from "@mui/material/Button";
-import { auth } from "../components/firebase-config";
-import { createUserWithEmailAndPassword } from "firebase/auth";
+import { useNavigate } from "react-router-dom";
+import { UserAuth } from "../components/contexthook";
 
-import { LoginContext } from "../components/contexthook";
+export const RegisterPage = () => {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [userName, setUserName] = useState("");
+  const [error, setError] = useState("");
+  const navigate = useNavigate();
+  const { signin, createUser } = UserAuth();
 
-const Register = () => {
-  const {
-    setRegisterEmail,
-    setRegisterPassword,
-    setRegisterName,
-    setRegisterUserName,
-    registerEmail,
-    registerPassword,
-  } = useContext(LoginContext);
-  const register = async () => {
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setError("");
     try {
-      const user = await createUserWithEmailAndPassword(
-        auth,
-        registerEmail,
-        registerPassword
-      );
-    } catch (error) {
-      console.log(error.message);
+      await createUser(email, password);
+      navigate("/library");
+    } catch (e) {
+      setError(e.message);
+      console.log(e.message);
     }
   };
 
-  const logout = async () => {};
   return (
     <div className="register-page">
       <div className="register-container">
         <div className="register-title">
           <p>Register Account</p>
         </div>
-        <form>
+        <form onSubmit={handleSubmit}>
           <div className="form-input">
-            <p>Name</p>
+            <p>userName</p>
             <input
               onChange={(e) => {
-                setRegisterName(e.target.value);
+                setUserName(e.target.value);
               }}
               type="text"
             ></input>
           </div>
-          <div className="form-input">
-            <p>User Name</p>
-            <input
-              onChange={(e) => {
-                setRegisterUserName(e.target.value);
-              }}
-              type="text"
-            ></input>
-          </div>
+
           <div className="form-input">
             <p>Email</p>
             <input
               onChange={(e) => {
-                setRegisterEmail(e.target.value);
+                setEmail(e.target.value);
               }}
               type="email"
             ></input>
@@ -66,12 +54,12 @@ const Register = () => {
             <p>Password</p>
             <input
               onChange={(e) => {
-                setRegisterPassword(e.target.value);
+                setPassword(e.target.value);
               }}
               type="text"
             ></input>
           </div>
-          <Button variant="contained" onClick={register}>
+          <Button variant="contained" onClick={handleSubmit}>
             Create account
           </Button>
         </form>
@@ -83,4 +71,5 @@ const Register = () => {
     </div>
   );
 };
-export default Register;
+
+export default RegisterPage;

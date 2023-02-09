@@ -10,21 +10,15 @@ import Menu from "@mui/material/Menu";
 import MenuIcon from "@mui/icons-material/Menu";
 import Container from "@mui/material/Container";
 import Button from "@mui/material/Button";
-import Stack from "@mui/material/Stack";
 import MenuItem from "@mui/material/MenuItem";
 import LocalLibraryIcon from "@mui/icons-material/LocalLibrary";
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
-import { useContext } from "react";
-import { LoginContext } from "./contexthook";
-import { auth } from "./firebase-config";
+import { Stack } from "@mui/system";
 
 //#d7f9f1 #7aa095 #40531b #618b4a #afbc88
 const pages = [];
-const settings = ["Profile", "Account", "Dashboard", "Logout"];
 
 function ResponsiveAppBar() {
-  const { user } = useContext(LoginContext);
-
   return (
     <AppBar position="static">
       <Container className="toolbar" maxWidth="xl">
@@ -120,7 +114,7 @@ function ResponsiveAppBar() {
           </Box>
           <Box>
             <Stack direction="row" spacing={3}>
-              <Typography>{user?.email}</Typography>
+              <Typography></Typography>
               <AccountCircleIcon></AccountCircleIcon>
               <Button
                 variant="outlined"

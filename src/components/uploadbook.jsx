@@ -1,7 +1,6 @@
 import React from "react";
 import "./uploadbook.css";
 import { FaFileImage } from "react-icons/fa";
-import Stack from "@mui/material/Stack";
 import Button from "@mui/material/Button";
 
 const Uploadbook = () => {
